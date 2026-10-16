@@ -270,7 +270,7 @@ footer p{margin:0 0 6px}
 
     <div class="q">
       <label for="q15">Your own website, if you have one</label>
-      <input type="text" id="q15" name="Your website" data-q="Your website" placeholder="example.com">
+      <input type="text" id="q15" name="Your website" data-q="Your website">
     </div>
 
     <div class="q">
@@ -422,8 +422,10 @@ footer p{margin:0 0 6px}
       document.getElementById("hello").textContent =
         "Everything I need to build your website, " + who;
       document.getElementById("whoparam").value = who;
-      var n = document.getElementById("q1");
-      if (!n.value) n.value = who;
+      // Deliberately NOT written into the name field. No question on this form
+      // ever starts with text already in it, so nothing can be mistaken for the
+      // client's own answer or sent back unread. The name is recorded in the
+      // hidden field above and shown in the headline instead.
     }
   } catch(e){}
 
