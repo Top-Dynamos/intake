@@ -3,484 +3,536 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Website Intake | Top Dynamos</title>
-<meta name="description" content="Tell us about your work so we can build your website. Your answers save in this browser as you type.">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex,nofollow">
+<title>Client Intake &middot; Top Dynamos</title>
+<meta name="description" content="Everything I need to build your website. Answer what you can, save as you go, send it when you are ready.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230A111C'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='700' fill='%23E8C884' text-anchor='middle'%3ETD%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   Top Dynamos client intake.
+   Palette taken from the work report so the two read as one family.
+   Measured contrast, WCAG AA:
+                      on ink #080c14   on panel #0d1421
+   --cream #dce4ee        15.07            14.31
+   --gold  #e8c884        12.11            11.50
+   --gold2 #fff3d6        16.63            15.79
+   --mut   #93a3b8         7.01             6.66
+   ============================================================ */
 :root{
-  --navy:#0A111C; --navy-2:#0D1421; --navy-3:#1D2B3F;
-  --gold:#E8C884; --gold-dk:#B98F3E; --cream:#FFF3D6;
-  --paper:#FBF9F5; --panel:#FFFFFF;
-  --ink:#141A22; --ink-2:#39424E; --mid:#5C6672; --faint:#8A939E;
-  --rule:#E3DDD2; --rule-2:#EFEAE1;
-  --ok:#1C6B4B; --ok-soft:#E6F2EC;
-  --disp:"Fraunces",Georgia,serif;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ink:#080c14;
+  --panel:#0d1421;
+  --panel2:#111a2b;
+  --line:#1d2b3f;
+  --line2:#2b3d57;
+  --cream:#dce4ee;
+  --gold:#e8c884;
+  --gold2:#fff3d6;
+  --mut:#93a3b8;
+  --good:#8fd6a4;
+  --wrap:760px;
 }
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--paper);color:var(--ink-2);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,legend{font-family:var(--disp);color:var(--ink);margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ink); color:var(--cream);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px; line-height:1.65; letter-spacing:.1px;
+}
+.w{width:100%; max-width:var(--wrap); margin:0 auto; padding:0 20px}
 
-.top{background:var(--navy);color:var(--cream)}
-.top .in{max-width:760px;margin:0 auto;padding:22px 20px;display:flex;align-items:center;gap:12px}
-.mark{font-family:var(--disp);font-weight:700;font-size:1.05rem;color:var(--cream)}
-.mark b{color:var(--navy);background:var(--gold);padding:1px 7px;border-radius:3px;margin-right:8px;font-weight:700}
+a{color:var(--gold)}
+a:hover{color:var(--gold2)}
 
-.hero{background:var(--navy-2);color:var(--cream);padding:46px 0 52px}
-.hero .in{max-width:760px;margin:0 auto;padding:0 20px}
-.hero h1{color:#fff;font-size:clamp(1.75rem,4.6vw,2.6rem);line-height:1.15;font-weight:600;letter-spacing:-.015em;max-width:20ch}
-.hero p{color:#B9C3D1;font-size:1.06rem;line-height:1.7;max-width:58ch;margin:16px 0 0}
-.hero .pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.hero .tip{color:var(--gold);font-size:.98rem}
-.hero .tip b{color:var(--cream);font-weight:600}
+/* a:hover is (0,1,1) and outranks a bare .skip, so a pointer resting at the top
+   left corner turned this gold on gold, 1.46:1. Pinned at every state. */
+a.skip,a.skip:hover,a.skip:focus{position:absolute;left:-9999px;top:0;z-index:99;
+  background:var(--gold);color:var(--ink);
+  padding:14px 22px;font-weight:600;border-radius:0 0 8px 0;text-decoration:none}
+a.skip:focus{left:0}
+a.skip:hover,a.skip:focus{background:var(--gold2)}
 
-.bar{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule)}
-.bar .in{max-width:760px;margin:0 auto;padding:12px 20px}
-.track{height:5px;background:var(--rule-2);border-radius:3px;overflow:hidden}
-.fill{height:100%;width:0;background:var(--gold-dk);transition:width .3s ease}
-.bar .lbl{display:flex;justify-content:space-between;gap:12px;font-size:.78rem;color:var(--mid);margin-top:8px;font-weight:500}
+/* ---------- header ---------- */
+header{padding:64px 0 34px}
+.kick{font-size:12px;letter-spacing:3.4px;text-transform:uppercase;color:var(--gold);
+  margin:0 0 20px;font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:46px;line-height:1.12;
+  margin:0 0 20px;color:var(--gold2)}
+.sub{color:var(--mut);font-size:18px;margin:0 0 26px;max-width:60ch}
+.intro{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:24px 26px;margin:0 0 10px}
+.intro p{margin:0 0 12px;font-size:16.5px}
+.intro p:last-child{margin:0}
+.intro b{color:var(--gold2);font-weight:600}
 
-main{max-width:760px;margin:0 auto;padding:36px 20px 90px}
+/* ---------- progress ---------- */
+.prog{position:sticky;top:0;z-index:20;background:rgba(8,12,20,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
+.prog .w{display:flex;align-items:center;gap:16px}
+.bar{flex:1;height:7px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gold);border-radius:99px;
+  transition:width .25s ease}
+.cnt{font-size:14px;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
 
-fieldset{border:0;margin:0;padding:0}
-legend{font-size:clamp(1.35rem,3.2vw,1.8rem);font-weight:600;line-height:1.25;padding:0;margin-bottom:6px}
-.sec-note{color:var(--mid);font-size:.97rem;margin:0 0 30px}
+/* ---------- sections ---------- */
+section{padding:30px 0 6px}
+.snum{font-size:12px;letter-spacing:2.6px;text-transform:uppercase;color:var(--gold);
+  font-weight:600;margin:0 0 8px}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:28px;line-height:1.2;
+  margin:0 0 6px;color:var(--gold2)}
+.scap{color:var(--mut);font-size:16px;margin:0 0 24px;max-width:58ch}
 
-.q{margin-bottom:28px}
-.q > label{display:block;font-size:1.03rem;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.45}
-.hint{display:block;font-size:.88rem;color:var(--mid);margin-bottom:9px;line-height:1.5}
-input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
-  width:100%;background:var(--panel);border:1px solid var(--rule);border-radius:6px;
-  padding:13px 14px;font-family:var(--body);font-size:1rem;color:var(--ink);line-height:1.55}
-textarea{min-height:108px;resize:vertical}
-input:focus,textarea:focus,select:focus{outline:3px solid rgba(185,143,62,.3);outline-offset:1px;border-color:var(--gold-dk)}
-.req{color:var(--gold-dk);font-weight:600}
+.q{margin:0 0 26px}
+.q label{display:block;font-weight:600;font-size:17px;margin:0 0 4px;color:var(--cream)}
+.q .hint{display:block;color:var(--mut);font-size:15px;margin:0 0 10px}
+.req{color:var(--gold);font-weight:600;font-size:14px;letter-spacing:.4px}
 
-.radios{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
-.radios label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--panel);
-  border-radius:6px;padding:11px 15px;font-size:.95rem;cursor:pointer;min-height:44px}
-.radios input{accent-color:var(--gold-dk);width:17px;height:17px}
-.check{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--rule);background:var(--panel);
-  border-radius:7px;padding:16px 17px;cursor:pointer}
-.check input{accent-color:var(--gold-dk);width:19px;height:19px;margin-top:2px;flex:none}
-.check span{font-size:.96rem;line-height:1.6;color:var(--ink-2)}
+input[type=text],input[type=email],input[type=tel],textarea,select{
+  width:100%;background:var(--panel);color:var(--cream);
+  border:1px solid var(--line2);border-radius:10px;
+  padding:14px 16px;font:inherit;font-size:17px;line-height:1.55;
+}
+textarea{min-height:104px;resize:vertical}
+select{appearance:none;background-image:
+  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8c884' stroke-width='2.2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:20px;
+  padding-right:46px;cursor:pointer}
+input::placeholder,textarea::placeholder{color:#7b8ba3}  /* 5.40 on the panel; #6d7d93 measured 4.45 and failed */
+input:focus,textarea:focus,select:focus{outline:3px solid var(--gold);outline-offset:2px;
+  border-color:var(--gold);background:var(--panel2)}
+.filled{border-color:var(--line2);box-shadow:inset 3px 0 0 var(--good)}
 
-.nav{display:flex;gap:11px;flex-wrap:wrap;align-items:center;margin-top:36px;padding-top:26px;border-top:1px solid var(--rule)}
-button{font-family:var(--body);font-size:.93rem;font-weight:600;border-radius:6px;cursor:pointer;
-  padding:15px 28px;border:1.5px solid transparent;min-height:48px}
-.b-main{background:var(--navy);color:var(--cream);border-color:var(--navy)}
-.b-main:hover{background:var(--navy-3);border-color:var(--navy-3)}
-.b-gold{background:var(--gold-dk);color:#fff;border-color:var(--gold-dk)}
-.b-gold:hover{background:#9C7730;border-color:#9C7730}
-.b-quiet{background:transparent;color:var(--ink-2);border-color:var(--rule)}
-.b-quiet:hover{background:#F2EDE4}
-.b-link{background:none;border:0;color:var(--mid);text-decoration:underline;padding:12px 4px;font-weight:500;min-height:44px}
-.b-link:hover{color:var(--ink)}
+/* ---------- send ---------- */
+.send{margin:40px 0 0;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:30px 26px}
+.send h2{margin-bottom:8px}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 0}
+button{font:inherit;font-weight:600;font-size:16.5px;cursor:pointer;border-radius:10px;
+  padding:16px 30px;border:1px solid transparent}
+.primary{background:var(--gold);color:#0a1018}
+.primary:hover{background:var(--gold2)}
+.ghost{background:transparent;color:var(--cream);border-color:var(--line2)}
+.ghost:hover{border-color:var(--gold);color:var(--gold2)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.said{margin:16px 0 0;color:var(--good);font-size:16px;min-height:24px}
+.fb{margin:22px 0 0}
+.fb p{color:var(--mut);font-size:15px;margin:0 0 10px}
+.fb textarea{min-height:220px;font-size:15px}
 
-.saved{font-size:.84rem;color:var(--ok);margin-left:auto;opacity:0;transition:opacity .25s}
-.saved.on{opacity:1}
+footer{padding:50px 0 70px;color:var(--mut);font-size:15px}
+footer p{margin:0 0 6px}
 
-.review{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px}
-.review h3{font-family:var(--disp);font-size:1.05rem;margin:0 0 10px;color:var(--ink)}
-.review pre{white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:.92rem;
-  color:var(--ink-2);max-height:300px;overflow:auto;margin:0;line-height:1.6}
-.tools{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-
-.note{background:var(--ok-soft);border-left:3px solid var(--ok);border-radius:0 7px 7px 0;padding:15px 17px;margin:26px 0;font-size:.95rem;color:#1B4636}
-.note b{color:#143627}
-
-footer{background:var(--navy);color:#8795A8;padding:34px 0;font-size:.88rem}
-footer .in{max-width:760px;margin:0 auto;padding:0 20px}
-footer .mark{font-size:.95rem}
-
-@media (max-width:560px){
-  body{font-size:16px}
-  .hero{padding:34px 0 38px}
-  main{padding:26px 20px 70px}
-  .nav button{flex:1 1 100%}
-  .saved{margin:6px 0 0}
-  .bar .lbl{font-size:.74rem}
+@media(max-width:700px){
+  header{padding:42px 0 26px}
+  h1{font-size:33px}
+  .sub{font-size:17px}
+  h2{font-size:24px}
+  body{font-size:16.5px}
+  .btns button{width:100%}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#start">Skip to the questions</a>
 
-<div class="top"><div class="in"><span class="mark"><b>TD</b>TOP DYNAMOS</span></div></div>
+<header>
+  <div class="w">
+    <p class="kick">Top Dynamos</p>
+    <h1 id="hello">Everything I need to build your website</h1>
+    <p class="sub">Your answers become the page. Nothing goes on it that you have not told me or that I cannot find in your own published record.</p>
+    <div class="intro">
+      <p><b>Answer what you can.</b> Only your name and your email address are needed. Leave the rest blank if it does not apply or you would rather talk it through.</p>
+      <p><b>You can stop and come back.</b> This page saves what you type on your own device as you go, so closing it does not lose anything.</p>
+      <p><b>There is no wrong length.</b> A few words is fine. So is a long answer. Write it the way you would say it out loud.</p>
+    </div>
+  </div>
+</header>
 
-<div class="hero"><div class="in">
-  <span class="pill">Website intake</span>
-  <h1>Before we build anything, we need to hear it from you.</h1>
-  <p>This is the only thing we will ask you to fill in. Everything we need to build your website end to end is in here, so once it is done we can get on with it without coming back to you with more questions.</p>
-  <p>Set aside twenty five minutes. Nothing goes on your website that you have not written here or confirmed, so anything you skip simply gets left off rather than guessed at.</p>
-  <p class="tip">Short of time? The sections that matter most are <b>What you do</b>, <b>What you actually think</b> and <b>Proof</b>. Those are what make a page sound like you and give a visitor a reason to believe it.</p>
-</div></div>
+<div class="prog">
+  <div class="w">
+    <div class="bar"><i id="fill"></i></div>
+    <span class="cnt" id="count">0 answered</span>
+  </div>
+</div>
 
-<div class="bar"><div class="in">
-  <div class="track"><div class="fill" id="fill"></div></div>
-  <div class="lbl"><span id="stepName">The basics</span><span id="stepNum">Step 1 of 11</span></div>
-</div></div>
-
-<main>
-<!-- novalidate on purpose. With a required field sitting on a hidden step the browser
-     refuses to submit and never fires the submit event, so the client gets a dead button
-     and no message. We validate ourselves below and jump them to the field instead. -->
-<form id="f" action="https://formsubmit.co/tahir@topdynamos.com" method="POST" novalidate>
-
-  <input type="hidden" name="_subject" id="subj" value="Website intake">
+<form id="intake" action="https://formsubmit.co/tahir@topdynamos.com" method="POST">
+  <input type="hidden" name="_subject" value="Top Dynamos client intake">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" id="next" value="https://top-dynamos.github.io/intake/thanks/">
-  <input type="text" name="_honey" id="hp" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="_next" value="https://top-dynamos.github.io/intake/thanks.html">
+  <input type="hidden" name="Sent from" id="whoparam" value="">
+  <input type="text" name="_honey" id="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
-  <!-- 1 -->
-  <fieldset data-step="0" data-name="The basics">
-    <legend>The basics</legend>
-    <p class="sec-note">Who you are and how we reach you.</p>
-    <div class="q"><label for="q_name">Your full name, as it should appear on the site <span class="req">required</span></label><input type="text" id="q_name" name="Full name" required autocomplete="name"></div>
-    <div class="q"><label for="q_post">Letters after your name</label><span class="hint">Any you want shown, for example PhD, MD, CPCU, Esq. Leave blank if you would rather not use them.</span><input type="text" id="q_post" name="Post-nominals"></div>
-    <div class="q"><label for="q_called">What do people actually call you?</label><span class="hint">If you go by something other than your full name.</span><input type="text" id="q_called" name="Goes by"></div>
-    <div class="q"><label for="q_address">How should we address you in writing?</label><span class="hint">For example Mr. Clapp, Dr. Fennoy, Colonel Garner, or just your first name. We would rather ask than guess wrongly.</span><input type="text" id="q_address" name="How to address you"></div>
-    <div class="q"><label for="q_title">Current title</label><input type="text" id="q_title" name="Title"></div>
-    <div class="q"><label for="q_org">Organization</label><input type="text" id="q_org" name="Organization"></div>
-    <div class="q"><label for="q_city">City and state</label><input type="text" id="q_city" name="City and state"></div>
-    <div class="q"><label for="q_years">Years in this field</label><input type="text" id="q_years" name="Years in field"></div>
-    <div class="q"><label for="q_email">Contact email for the site <span class="req">required</span></label><span class="hint">Where enquiries from the website will go. It can be different from your personal address.</span><input type="email" id="q_email" name="Contact email" required autocomplete="email"></div>
-    <div class="q"><label for="q_phone">Contact phone</label><span class="hint">Leave blank if you would rather it was not published.</span><input type="tel" id="q_phone" name="Contact phone" autocomplete="tel"></div>
-    <div class="q"><label for="q_cc">Anyone else we should copy on emails?</label><span class="hint">An assistant, a partner, a colleague. Name and address.</span><input type="text" id="q_cc" name="Copy on emails"></div>
-    <div class="q"><label for="q_reach">Best times to reach you, and your time zone</label><span class="hint">So we are not trading messages trying to find an hour.</span><input type="text" id="q_reach" name="Best times to reach you"></div>
-    <div class="q"><label for="q_links">Any existing links</label><span class="hint">Current website, LinkedIn, a company page, anything already online about you. One per line. Put a star next to any you want shown ON the site, as opposed to just given to us for research.</span><textarea id="q_links" name="Existing links"></textarea></div>
-  </fieldset>
+  <div class="w" id="start">
 
-  <!-- 2 -->
-  <fieldset data-step="1" data-name="What you do" hidden>
-    <legend>What you do</legend>
-    <p class="sec-note">This is the part visitors read first, so it matters more than the rest.</p>
-    <div class="q"><label for="q_party">Someone at a party asks what you do. What do you actually say?</label><span class="hint">Your words, not a job description.</span><textarea id="q_party" name="What you do, in your words"></textarea></div>
-    <div class="q"><label for="q_why">And why does it matter?</label><textarea id="q_why" name="Why it matters"></textarea></div>
-    <div class="q"><label for="q_orgdoes">What does your organization do?</label><textarea id="q_orgdoes" name="What the organization does"></textarea></div>
-    <div class="q"><label for="q_day">Walk us through a real working day.</label><textarea id="q_day" name="A real working day"></textarea></div>
-    <div class="q"><label for="q_diff">What makes you different from others doing similar work?</label><span class="hint">The honest answer, even if it is unglamorous.</span><textarea id="q_diff" name="What makes you different"></textarea></div>
-  </fieldset>
+  <section>
+    <p class="snum">Part one</p>
+    <h2>Who you are</h2>
+    <p class="scap">The basics, so the page carries your name exactly as you use it.</p>
 
-  <!-- 3 -->
-  <fieldset data-step="2" data-name="Who you serve" hidden>
-    <legend>Who you serve, and what you offer</legend>
-    <p class="sec-note">This usually becomes a section of its own on the page.</p>
-    <div class="q"><label for="q_serve">Who do you serve, and who hires you?</label><textarea id="q_serve" name="Who you serve"></textarea></div>
-    <div class="q"><label for="q_notfor">Who are you NOT the right fit for?</label><span class="hint">Saying this plainly makes the rest more believable, and saves you wasted enquiries.</span><textarea id="q_notfor" name="Who you are not for"></textarea></div>
-    <div class="q"><label for="q_services">List the specific things you do, as services.</label><span class="hint">One per line.</span><textarea id="q_services" name="Services"></textarea></div>
-    <div class="q"><label for="q_area">Areas or regions you serve</label><span class="hint">Local, statewide, national, international, or remote.</span><input type="text" id="q_area" name="Areas served"></div>
-    <div class="q"><label for="q_lang">Languages you work in</label><input type="text" id="q_lang" name="Languages"></div>
-    <div class="q"><label>Are you taking on new work right now?</label>
-      <div class="radios">
-        <label><input type="radio" name="Taking new work" value="Yes"> Yes</label>
-        <label><input type="radio" name="Taking new work" value="Selectively"> Selectively</label>
-        <label><input type="radio" name="Taking new work" value="No, this is a profile only"> No, profile only</label>
-        <label><input type="radio" name="Taking new work" value="Retired"> Retired</label>
-      </div></div>
-    <div class="q"><label>Should prices or fees appear on the site?</label>
-      <span class="hint">Most people in your position say no. If yes, write the exact figures in the box below and we will use them word for word.</span>
-      <div class="radios">
-        <label><input type="radio" name="Show prices" value="No"> No</label>
-        <label><input type="radio" name="Show prices" value="Yes, as written below"> Yes, as written below</label>
-        <label><input type="radio" name="Show prices" value="A range or from price"> A range or from price</label>
-      </div>
-      <textarea id="q_prices" name="Pricing wording" style="margin-top:10px" placeholder="Only if you chose yes."></textarea></div>
-  </fieldset>
-
-  <!-- 4 -->
-  <fieldset data-step="3" data-name="How you got here" hidden>
-    <legend>How you got here</legend>
-    <p class="sec-note">The career, in order. Dates help, approximate is fine.</p>
-    <div class="q"><label for="q_first">Your first job, and what it taught you.</label><textarea id="q_first" name="First job"></textarea></div>
-    <div class="q"><label for="q_roles">Every role since, in order.</label><span class="hint">Employer, title and years. One per line. If you are not sure of a year, write about. We would far rather print "about 2015" than the wrong date.</span><textarea id="q_roles" name="Roles since"></textarea></div>
-    <div class="q"><label for="q_turn">Was there a turning point?</label><textarea id="q_turn" name="Turning point"></textarea></div>
-  </fieldset>
-
-  <!-- 5 -->
-  <fieldset data-step="4" data-name="Proof" hidden>
-    <legend>Proof</legend>
-    <p class="sec-note">We never invent a number, a client name or a result. If you leave these blank the page simply does not make those claims.</p>
-    <div class="q"><label for="q_numbers">Any numbers you are happy to publish</label><span class="hint">Years in practice, people served, matters handled, teams led, size of something you ran. Only ones you can stand behind.</span><textarea id="q_numbers" name="Numbers we may publish"></textarea></div>
-    <div class="q"><label for="q_namedclients">Clients, employers or organisations we may name</label><span class="hint">Only those you are free to name. Tell us if any need their permission first.</span><textarea id="q_namedclients" name="Clients or organisations we may name"></textarea></div>
-    <div class="q"><label for="q_speaking">Speaking, teaching, panels and boards</label><span class="hint">Where, roughly when, and what about.</span><textarea id="q_speaking" name="Speaking and teaching"></textarea></div>
-    <div class="q"><label for="q_logos">Publications or organisations whose logo we may show</label><span class="hint">Only where you genuinely appeared or belong. We will not display a logo you have not earned.</span><textarea id="q_logos" name="Logos we may display"></textarea></div>
-  </fieldset>
-
-  <!-- 6 -->
-  <fieldset data-step="5" data-name="Credentials" hidden>
-    <legend>Credentials and recognition</legend>
-    <p class="sec-note">We only publish what you list here.</p>
-    <div class="q"><label for="q_degrees">Degrees and institutions, with years.</label><textarea id="q_degrees" name="Degrees"></textarea></div>
-    <div class="q"><label for="q_lic">Licences and certifications, with the issuing body.</label><span class="hint">Say if any have lapsed, so we do not present an expired one as current.</span><textarea id="q_lic" name="Licences and certifications"></textarea></div>
-    <div class="q"><label for="q_memb">Professional memberships.</label><textarea id="q_memb" name="Memberships"></textarea></div>
-    <div class="q"><label for="q_awards">Awards, honours and listings.</label><textarea id="q_awards" name="Awards and honours"></textarea></div>
-    <div class="q"><label for="q_press">Press, interviews and podcasts.</label><span class="hint">With links where you have them.</span><textarea id="q_press" name="Press and interviews"></textarea></div>
-    <div class="q"><label for="q_pub">Anything you have published.</label><span class="hint">Title, publisher, date. Add the format and where to buy it if it is for sale.</span><textarea id="q_pub" name="Published work"></textarea></div>
-  </fieldset>
-
-  <!-- 7 -->
-  <fieldset data-step="6" data-name="What you think" hidden>
-    <legend>What you actually think</legend>
-    <p class="sec-note">These answers are what make a page sound like a person rather than a brochure.</p>
-    <div class="q"><label for="q_belief">What do you believe about your work that not everyone in your field agrees with?</label><textarea id="q_belief" name="Contrarian belief"></textarea></div>
-    <div class="q"><label for="q_mistake">What is the most expensive mistake you see people make?</label><textarea id="q_mistake" name="Most expensive mistake"></textarea></div>
-    <div class="q"><label for="q_advice">What would you tell someone starting out today?</label><textarea id="q_advice" name="Advice to someone starting out"></textarea></div>
-    <div class="q"><label for="q_story">Tell us about one thing that happened.</label><span class="hint">One real story, told properly. This is often the best thing on a website.</span><textarea id="q_story" name="One story"></textarea></div>
-    <div class="q"><label for="q_proud">And what are you most proud of?</label><textarea id="q_proud" name="Most proud of"></textarea></div>
-    <div class="q"><label for="q_quote">Two or three sentences you would be happy to see quoted word for word.</label><textarea id="q_quote" name="Verbatim quote"></textarea></div>
-  </fieldset>
-
-  <!-- 8 -->
-  <fieldset data-step="7" data-name="What others say" hidden>
-    <legend>What other people say</legend>
-    <p class="sec-note">We never write a testimonial for you. If you have none, leave this blank and we leave the section off.</p>
-    <div class="q"><label for="q_testi">Testimonials, in full.</label><span class="hint">Word for word, with the person's name and role.</span><textarea id="q_testi" name="Testimonials"></textarea></div>
-    <div class="q"><label>Do you have permission to publish each of these, with their name?</label>
-      <div class="radios">
-        <label><input type="radio" name="Testimonial permission" value="Yes, all of them"> Yes, all of them</label>
-        <label><input type="radio" name="Testimonial permission" value="Some of them"> Some of them</label>
-        <label><input type="radio" name="Testimonial permission" value="Not yet"> Not yet</label>
-        <label><input type="radio" name="Testimonial permission" value="Not applicable"> Not applicable</label>
-      </div></div>
-  </fieldset>
-
-  <!-- 9 -->
-  <fieldset data-step="8" data-name="What you already have" hidden>
-    <legend>Material you already have</legend>
-    <p class="sec-note">Anything here saves us both time, and keeps the site in your own voice.</p>
-    <div class="q"><label for="q_bio">A biography you have used before</label><span class="hint">Paste it in full, even if it is out of date. Tell us anything in it that is now wrong.</span><textarea id="q_bio" name="Existing biography"></textarea></div>
-    <div class="q"><label for="q_cv">Link to your CV or resume</label><span class="hint">Google Drive, Dropbox or similar. Please do not attach files to this form.</span><input type="url" id="q_cv" name="CV or resume link" placeholder="https://"></div>
-    <div class="q"><label for="q_docs">Documents we should host or link</label><span class="hint">Published articles, a press release, a brochure. Links, one per line.</span><textarea id="q_docs" name="Documents to host"></textarea></div>
-    <div class="q"><label for="q_video">Any video we should embed</label><span class="hint">A talk, an interview, an introduction. YouTube or Vimeo links.</span><textarea id="q_video" name="Video links"></textarea></div>
-  </fieldset>
-
-  <!-- 10 -->
-  <fieldset data-step="9" data-name="Pictures and look" hidden>
-    <legend>Pictures and how it should look</legend>
-    <p class="sec-note">A good picture does more for a personal website than any amount of copy.</p>
-    <div class="q"><label for="q_photos">What photographs do you have?</label><span class="hint">Headshots, at work, speaking, anything. Tell us roughly what exists.</span><textarea id="q_photos" name="Photographs you have"></textarea></div>
-    <div class="q"><label for="q_photolink">Paste the link to your photographs here.</label><span class="hint">Google Drive, Dropbox or WeTransfer is easiest.</span><input type="url" id="q_photolink" name="Photograph link" placeholder="https://"></div>
-    <div class="q"><label for="q_photowho">Who took them, and may we publish them?</label><span class="hint">If a photographer holds the copyright we need to know before we use them.</span><textarea id="q_photowho" name="Photograph rights"></textarea></div>
-    <div class="q"><label>May we create additional pictures of you for the site?</label>
-      <span class="hint">Some images would be generated rather than photographed. We would use these as portraits only, never to show you doing work you did not do, and we would show them to you before anything goes live.</span>
-      <div class="radios">
-        <label><input type="radio" name="Permission to create pictures" value="Yes"> Yes</label>
-        <label><input type="radio" name="Permission to create pictures" value="No, photographs only"> No, photographs only</label>
-        <label><input type="radio" name="Permission to create pictures" value="Ask me first"> Ask me first</label>
-      </div></div>
-    <div class="q"><label for="q_brand">Do you have a logo or brand colours we should keep?</label><span class="hint">If you run a company with existing branding, say so and send the logo with your photographs. If you have none, say so and we will choose.</span><textarea id="q_brand" name="Logo and brand colours"></textarea></div>
-    <div class="q"><label>How should it feel?</label>
-      <div class="radios">
-        <label><input type="radio" name="Tone" value="Formal and traditional"> Formal and traditional</label>
-        <label><input type="radio" name="Tone" value="Clean and modern"> Clean and modern</label>
-        <label><input type="radio" name="Tone" value="Warm and personal"> Warm and personal</label>
-        <label><input type="radio" name="Tone" value="Bold"> Bold</label>
-        <label><input type="radio" name="Tone" value="You decide"> You decide</label>
-      </div></div>
-    <div class="q"><label for="q_feel">Is there a website whose feel you like?</label><span class="hint">Any field, it does not have to be your industry. Paste the link. Tell us if there is one you dislike too.</span><textarea id="q_feel" name="Reference website"></textarea></div>
-  </fieldset>
-
-  <!-- 11 -->
-  <fieldset data-step="10" data-name="Launch and limits" hidden>
-    <legend>Launch, and where the edges are</legend>
-    <p class="sec-note">Last one. These are the questions that otherwise hold a finished site up for weeks.</p>
-
-    <div class="q"><label for="q_goal">What is the one thing you want this website to achieve?</label><span class="hint">Enquiries, credibility when someone looks you up, speaking invitations, board seats, recruiting. Pick the main one.</span><textarea id="q_goal" name="Main goal of the site"></textarea></div>
-    <div class="q"><label for="q_firstaction">When someone lands on it, what should they do first?</label><span class="hint">Call you, send a message, read your story, download something, connect on LinkedIn.</span><input type="text" id="q_firstaction" name="What a visitor should do first"></div>
-    <div class="q"><label>How should people contact you from the site?</label>
-      <span class="hint">A contact form needs a working email address. If you would rather not publish one, we can send people to LinkedIn or a phone number instead.</span>
-      <div class="radios">
-        <label><input type="radio" name="Contact method on site" value="A contact form"> A contact form</label>
-        <label><input type="radio" name="Contact method on site" value="Show my email address"> Show my email</label>
-        <label><input type="radio" name="Contact method on site" value="Phone only"> Phone only</label>
-        <label><input type="radio" name="Contact method on site" value="Send people to LinkedIn"> Send them to LinkedIn</label>
-      </div></div>
-
-    <div class="q"><label>Should this site be findable on Google?</label>
-      <span class="hint">Most people want yes. Some would rather it only be seen by people they send the link to.</span>
-      <div class="radios">
-        <label><input type="radio" name="Findable on Google" value="Yes"> Yes</label>
-        <label><input type="radio" name="Findable on Google" value="No, private link only"> No, private link only</label>
-        <label><input type="radio" name="Findable on Google" value="Not until I approve it"> Not until I approve it</label>
-      </div></div>
-    <div class="q"><label for="q_domain">Do you own a domain?</label><span class="hint">If yes, write it exactly. If not, say no and we will advise.</span><input type="text" id="q_domain" name="Domain"></div>
-    <div class="q"><label for="q_registrar">Who controls that domain, and where is it registered?</label><span class="hint">GoDaddy, Namecheap, your IT person, a former web designer. We need whoever can change its settings, otherwise launch stalls here.</span><input type="text" id="q_registrar" name="Domain control"></div>
-    <div class="q"><label>You already have a website. What happens to it?</label>
-      <div class="radios">
-        <label><input type="radio" name="Existing website" value="Replace it"> Replace it</label>
-        <label><input type="radio" name="Existing website" value="Keep both"> Keep both</label>
-        <label><input type="radio" name="Existing website" value="Point it at the new one"> Point it at the new one</label>
-        <label><input type="radio" name="Existing website" value="I do not have one"> I do not have one</label>
-      </div></div>
-    <div class="q"><label for="q_when">When do you need it?</label><input type="text" id="q_when" name="Deadline"></div>
-
-    <div class="q"><label for="q_wrong">Is anything currently online about you wrong or out of date?</label><span class="hint">An old title, a former company, a wrong qualification, a profile you no longer control, someone else with your name.</span><textarea id="q_wrong" name="Wrong or outdated online"></textarea></div>
-    <div class="q"><label for="q_nope">What do you not want on this site?</label><span class="hint">A former employer, an address, a photograph, a subject, a period of your life.</span><textarea id="q_nope" name="What not to include"></textarea></div>
-    <div class="q"><label for="q_private">Anything you would rather not make easier to find?</label><span class="hint">A home address, family members, a town, anything you have had trouble over. We will design around it.</span><textarea id="q_private" name="Keep harder to find"></textarea></div>
-    <div class="q"><label for="q_nda">Anything confidential, under NDA, or that your employer restricts?</label><span class="hint">Some firms have rules about what their people may publish. Better we know now than after it is live.</span><textarea id="q_nda" name="Confidential or restricted"></textarea></div>
-    <div class="q"><label for="q_approve">Does anyone need to approve this before it goes live?</label><span class="hint">A spouse, a partner, a compliance team, a marketing department. Name and address.</span><input type="text" id="q_approve" name="Approval needed from"></div>
-    <div class="q"><label for="q_else">Anything we did not ask?</label><textarea id="q_else" name="Anything else"></textarea></div>
-
-    <div class="q"><label class="check">
-      <input type="checkbox" name="Confirmed accurate" value="Yes, confirmed" required>
-      <span>Everything I have written here is accurate, and I have the right to publish it, including any photographs, testimonials and logos I have given you. <span class="req">required</span></span>
-    </label></div>
-
-    <div class="note"><b>What happens next.</b> Press send and your answers come straight to us. We build from exactly what is here. If something is missing we leave it off rather than invent it. Nothing is published until you have seen it.</div>
-
-    <div class="review">
-      <h3>Your answers so far</h3>
-      <pre id="dump">Nothing filled in yet.</pre>
-      <div class="tools">
-        <button type="button" class="b-quiet" id="copy">Copy all answers</button>
-        <button type="button" class="b-quiet" id="dl">Download as a file</button>
-      </div>
+    <div class="q">
+      <label for="q1">Your full name <span class="req">needed</span></label>
+      <span class="hint">Including any letters after it that you use professionally.</span>
+      <input type="text" id="q1" name="Full name" data-q="Your full name" required autocomplete="name">
     </div>
-  </fieldset>
 
-  <div class="nav">
-    <button type="button" class="b-quiet" id="back" hidden>Back</button>
-    <button type="button" class="b-main" id="fwd">Next</button>
-    <button type="submit" class="b-gold" id="send" hidden>Send to Top Dynamos</button>
-    <button type="button" class="b-link" id="clear">Clear and start again</button>
-    <span class="saved" id="saved">Saved</span>
+    <div class="q">
+      <label for="q2">How would you like to be addressed on the page?</label>
+      <span class="hint">For example Dr. Moran, or John, or John Moran. Some people want the title, some find it stiff.</span>
+      <input type="text" id="q2" name="How to address you" data-q="How to be addressed">
+    </div>
+
+    <div class="q">
+      <label for="q3">Your current title and where you work</label>
+      <input type="text" id="q3" name="Title and organization" data-q="Title and organization">
+    </div>
+
+    <div class="q">
+      <label for="q4">City and state</label>
+      <input type="text" id="q4" name="City and state" data-q="City and state">
+    </div>
+
+    <div class="q">
+      <label for="q5">Your email address <span class="req">needed</span></label>
+      <span class="hint">So I can send you the page when it is ready.</span>
+      <input type="email" id="q5" name="Email address" data-q="Email address" required autocomplete="email">
+    </div>
+
+    <div class="q">
+      <label for="q6">The best number to reach you on</label>
+      <span class="hint">Only if you would like a call. It does not go on the website unless you say so further down.</span>
+      <input type="tel" id="q6" name="Phone number" data-q="Phone number" autocomplete="tel">
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part two</p>
+    <h2>Your work</h2>
+    <p class="scap">This is the part that makes the page sound like you rather than like a directory entry.</p>
+
+    <div class="q">
+      <label for="q7">In a sentence or two, what do you do?</label>
+      <span class="hint">As you would explain it to someone sitting next to you on a plane.</span>
+      <textarea id="q7" name="What you do" data-q="What you do"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q8">How did you come to do it?</label>
+      <span class="hint">What you were doing before, and what turned you toward this.</span>
+      <textarea id="q8" name="How you got into it" data-q="How you got into it"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q9">The positions you have held</label>
+      <span class="hint">With the years if you remember them. Rough is better than nothing.</span>
+      <textarea id="q9" name="Positions held" data-q="Positions held"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q10">The work you are most proud of</label>
+      <span class="hint">One thing, or several. It does not have to be the biggest, just the one that matters to you.</span>
+      <textarea id="q10" name="Proudest work" data-q="Proudest work"></textarea>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part three</p>
+    <h2>Credentials</h2>
+    <p class="scap">Only things that are real and that you can point to. Nothing on the page is invented.</p>
+
+    <div class="q">
+      <label for="q11">Degrees, and where they are from</label>
+      <textarea id="q11" name="Degrees" data-q="Degrees"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q12">Licenses, certifications, memberships and boards</label>
+      <textarea id="q12" name="Licenses memberships and boards" data-q="Licenses, memberships and boards"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q13">Awards and honors</label>
+      <span class="hint">With the year and who gave them, if you have it.</span>
+      <textarea id="q13" name="Awards and honors" data-q="Awards and honors"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q14">Publications, patents, research or anything you have written</label>
+      <textarea id="q14" name="Publications and research" data-q="Publications and research"></textarea>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part four</p>
+    <h2>Where you already appear</h2>
+    <p class="scap">Links save me guessing, and they let me check every fact against something of yours.</p>
+
+    <div class="q">
+      <label for="q15">Your own website, if you have one</label>
+      <input type="text" id="q15" name="Your website" data-q="Your website" placeholder="example.com">
+    </div>
+
+    <div class="q">
+      <label for="q16">LinkedIn or any other profile</label>
+      <textarea id="q16" name="Profiles" data-q="Profiles"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q17">Press, interviews, talks or articles about you</label>
+      <span class="hint">Paste the links, or just name them and I will find them.</span>
+      <textarea id="q17" name="Press and interviews" data-q="Press and interviews"></textarea>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part five</p>
+    <h2>Pictures</h2>
+    <p class="scap">A real photograph of you is always better than anything I can make.</p>
+
+    <div class="q">
+      <label for="q18">Do you have photographs you can send me?</label>
+      <select id="q18" name="Photographs available" data-q="Photographs available">
+        <option value="">Choose one</option>
+        <option>Yes, I will email them to you</option>
+        <option>I have one or two</option>
+        <option>No, I do not have any</option>
+        <option>I am not sure, let us talk about it</option>
+      </select>
+    </div>
+
+    <div class="q">
+      <label for="q19">Where there is no photograph, may I use an illustration of you made by a computer?</label>
+      <span class="hint">These are generated from a photograph of your face. Any page that uses them says so in plain words, so nobody is misled into thinking they are real photographs. You can say no and the page will simply use fewer pictures.</span>
+      <select id="q19" name="Permission for AI illustrations" data-q="Permission for generated illustrations">
+        <option value="">Choose one</option>
+        <option>Yes, that is fine</option>
+        <option>Yes, but show me each one before it goes up</option>
+        <option>No, photographs only</option>
+        <option>I would like to understand this better first</option>
+      </select>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part six</p>
+    <h2>What the page is for</h2>
+    <p class="scap">Who it is aimed at changes what goes near the top.</p>
+
+    <div class="q">
+      <label for="q20">Who do you most want to find this page?</label>
+      <span class="hint">Patients, students, hiring committees, clients, your family, journalists, nobody in particular.</span>
+      <textarea id="q20" name="Who it is for" data-q="Who the page is for"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q21">What would you like them to do once they are there?</label>
+      <span class="hint">Call you, read your story, see your work, nothing at all.</span>
+      <textarea id="q21" name="What visitors should do" data-q="What visitors should do"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q22">Is there a website whose look you like?</label>
+      <span class="hint">Any site at all. It tells me more than a hundred words about style would.</span>
+      <textarea id="q22" name="Sites you like" data-q="Sites you like"></textarea>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part seven</p>
+    <h2>What to leave off</h2>
+    <p class="scap">As important as everything above. Please do not skip this one.</p>
+
+    <div class="q">
+      <label for="q23">Is there anything that must not appear on the page?</label>
+      <span class="hint">A former employer, a family name, an address, a date, an old job title, a photograph you dislike. Say so here and it will never go up.</span>
+      <textarea id="q23" name="Must not appear" data-q="Must not appear on the page"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q24">Is anything already published about you wrong or out of date?</label>
+      <span class="hint">Directories and old articles carry mistakes. If I know, I will not repeat them.</span>
+      <textarea id="q24" name="Wrong or out of date" data-q="Wrong or out of date elsewhere"></textarea>
+    </div>
+  </section>
+
+  <section>
+    <p class="snum">Part eight</p>
+    <h2>Practicalities</h2>
+    <p class="scap">The last few.</p>
+
+    <div class="q">
+      <label for="q25">What contact details are you happy to have on the page?</label>
+      <span class="hint">An email, a phone number, a practice address, or none at all.</span>
+      <textarea id="q25" name="Public contact details" data-q="Public contact details"></textarea>
+    </div>
+
+    <div class="q">
+      <label for="q26">Do you own a web address you would like this to sit on?</label>
+      <span class="hint">If not, that is normal and nothing needs doing.</span>
+      <input type="text" id="q26" name="Domain name" data-q="Domain name">
+    </div>
+
+    <div class="q">
+      <label for="q27">Anything else you want me to know</label>
+      <textarea id="q27" name="Anything else" data-q="Anything else"></textarea>
+    </div>
+  </section>
+
+  <div class="send">
+    <h2>Send it to me</h2>
+    <p class="scap" style="margin-bottom:0">When you press send, your answers come straight to me and you will see a short thank you page. If anything goes wrong, use the copy button and paste the lot into an email instead.</p>
+    <div class="btns">
+      <button type="submit" class="primary" id="go">Send my answers</button>
+      <button type="button" class="ghost" id="copy">Copy my answers</button>
+      <button type="button" class="ghost" id="clear">Clear this form</button>
+    </div>
+    <p class="said" id="said" role="status" aria-live="polite"></p>
+    <div class="fb" id="fallback" hidden>
+      <p id="fbnote"></p>
+      <textarea id="out" readonly aria-label="Your answers as plain text"></textarea>
+    </div>
+  </div>
+
   </div>
 </form>
-</main>
 
-<footer><div class="in">
-  <span class="mark"><b>TD</b>TOP DYNAMOS</span>
-  <p style="margin:12px 0 0">Your answers save in this browser as you type, so you can close this page and come back. Nothing is sent until you press send.</p>
-</div></footer>
+<footer>
+  <div class="w">
+    <p>Top Dynamos</p>
+    <p>Any question here can be answered by replying to my email instead. Whichever is easier.</p>
+  </div>
+</footer>
 
 <script>
 (function(){
-  var form=document.getElementById('f');
-  var steps=[].slice.call(form.querySelectorAll('fieldset'));
-  var fill=document.getElementById('fill'), stepName=document.getElementById('stepName'), stepNum=document.getElementById('stepNum');
-  var back=document.getElementById('back'), fwd=document.getElementById('fwd'), send=document.getElementById('send');
-  var saved=document.getElementById('saved'), dump=document.getElementById('dump'), subj=document.getElementById('subj');
-  var KEY='td-intake-v2', i=0, t=null;
+  var KEY = "top-dynamos-intake-v1";
+  var fields = Array.prototype.slice.call(document.querySelectorAll("[data-q]"));
+  var fill = document.getElementById("fill");
+  var count = document.getElementById("count");
+  var said = document.getElementById("said");
+  var form = document.getElementById("intake");
+  var saveTimer = null;
 
-  function fields(){ return [].slice.call(form.querySelectorAll('input,textarea,select'))
-    .filter(function(e){ return e.name && e.name.charAt(0)!=='_'; }); }
-
-  function setSubject(d){ var n=d['Full name']; subj.value = n ? ('Website intake from '+n) : 'Website intake'; }
-
-  function store(){
-    var d={}; fields().forEach(function(e){
-      if(e.type==='radio'||e.type==='checkbox'){ if(e.checked) d[e.name]=e.value; }
-      else if(e.value) d[e.name]=e.value;
-    });
-    try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(err){}
-    saved.classList.add('on'); clearTimeout(t); t=setTimeout(function(){ saved.classList.remove('on'); },1400);
-    setSubject(d); render(d);
-  }
-  function restore(){
-    var d={}; try{ d=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(err){ d={}; }
-    fields().forEach(function(e){
-      if(!(e.name in d)) return;
-      if(e.type==='radio'||e.type==='checkbox'){ if(e.value===d[e.name]) e.checked=true; }
-      else e.value=d[e.name];
-    });
-    setSubject(d); render(d);
-  }
-  function render(d){
-    var out=[]; Object.keys(d).forEach(function(k){ if(String(d[k]).trim()) out.push(k+'\n'+d[k]); });
-    dump.textContent = out.length ? out.join('\n\n') : 'Nothing filled in yet.';
-  }
-  function show(n){
-    i=Math.max(0, Math.min(steps.length-1, n));
-    steps.forEach(function(s,x){ s.hidden = x!==i; });
-    back.hidden = i===0;
-    fwd.hidden  = i===steps.length-1;
-    send.hidden = i!==steps.length-1;
-    stepName.textContent = steps[i].getAttribute('data-name');
-    stepNum.textContent = 'Step '+(i+1)+' of '+steps.length;
-    fill.style.width = (((i+1)/steps.length)*100)+'%';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function problem(e){
-    if(e.type==='checkbox') return e.checked ? null : 'Please tick this to continue.';
-    if(!e.value.trim()) return 'Please fill this in.';
-    if(e.type==='email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.value.trim()))
-      return 'That does not look like an email address.';
-    return null;
-  }
-  function scanStep(s){
-    var els=[].slice.call(steps[s].querySelectorAll('[required]'));
-    for(var k=0;k<els.length;k++){ var m=problem(els[k]); if(m) return {step:s, el:els[k], msg:m}; }
-    return null;
-  }
-  function firstInvalid(){
-    for(var s=0;s<steps.length;s++){ var r=scanStep(s); if(r) return r; }
-    return null;
-  }
-  function flag(r){
-    r.el.setCustomValidity(r.msg);
-    r.el.reportValidity();
-    r.el.focus();
-    setTimeout(function(){ r.el.setCustomValidity(''); },2500);
-  }
-  function valid(){
-    var r=scanStep(i);
-    if(r){ flag(r); return false; }
-    return true;
-  }
-
-  form.addEventListener('input', store);
-  form.addEventListener('change', store);
-  fwd.addEventListener('click', function(){ if(valid()) show(i+1); });
-  back.addEventListener('click', function(){ show(i-1); });
-
-  // A required field sitting on a hidden step cannot be focused, which silently
-  // blocks submission. Jump to its step and show the client what is missing.
-  form.addEventListener('submit', function(ev){
-    var bad=firstInvalid();
-    if(bad){
-      ev.preventDefault();
-      show(bad.step);
-      setTimeout(function(){ flag(bad); },420);
-      return;
+  // the link can carry a name, so the page greets the right person
+  try {
+    var p = new URLSearchParams(location.search);
+    var who = (p.get("client") || p.get("name") || "").trim();
+    if (who) {
+      document.getElementById("hello").textContent =
+        "Everything I need to build your website, " + who;
+      document.getElementById("whoparam").value = who;
+      var n = document.getElementById("q1");
+      if (!n.value) n.value = who;
     }
-    try{ localStorage.removeItem(KEY); }catch(err){}
+  } catch(e){}
+
+  function store(obj){ try { localStorage.setItem(KEY, JSON.stringify(obj)); } catch(e){} }
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ return {}; } }
+
+  var saved = load();
+  fields.forEach(function(el){
+    if (typeof saved[el.id] === "string" && !el.value) el.value = saved[el.id];
   });
 
-  document.getElementById('clear').addEventListener('click', function(){
-    if(!window.confirm('Clear every answer and start again?')) return;
-    try{ localStorage.removeItem(KEY); }catch(err){}
-    form.reset(); render({}); show(0);
-  });
-
-  function text(){
-    var d={}; try{ d=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(err){}
-    var o=['WEBSITE INTAKE','']; Object.keys(d).forEach(function(k){ if(String(d[k]).trim()) o.push(k.toUpperCase(), d[k], ''); });
-    return o.join('\n');
+  function tally(){
+    var n = 0;
+    fields.forEach(function(el){
+      var has = String(el.value || "").trim().length > 0;
+      if (has) n++;
+      el.classList.toggle("filled", has);
+    });
+    count.textContent = n + " of " + fields.length + " answered";
+    fill.style.width = Math.round(n / fields.length * 100) + "%";
   }
-  document.getElementById('copy').addEventListener('click', function(){
-    var b=this;
-    function done(){ b.textContent='Copied'; setTimeout(function(){ b.textContent='Copy all answers'; },1600); }
-    function fallback(){
-      var ta=document.createElement('textarea'); ta.value=text(); document.body.appendChild(ta);
-      ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta);
-    }
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text()).then(done, fallback); }
-    else fallback();
+
+  function queueSave(){
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      var obj = {};
+      fields.forEach(function(el){ if (String(el.value||"").trim()) obj[el.id] = el.value; });
+      store(obj);
+    }, 400);
+  }
+
+  fields.forEach(function(el){
+    el.addEventListener("input", function(){ tally(); queueSave(); });
+    el.addEventListener("change", function(){ tally(); queueSave(); });
   });
-  document.getElementById('dl').addEventListener('click', function(){
-    var blob=new Blob([text()],{type:'text/plain'}), a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download='website-intake.txt';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(a.href); },1000);
+  tally();
+
+  function transcript(){
+    var out = ["Top Dynamos client intake", ""];
+    var who = document.getElementById("q1").value.trim();
+    if (who) out.push("From: " + who, "");
+    Array.prototype.slice.call(document.querySelectorAll("section")).forEach(function(sec){
+      var h = sec.querySelector("h2");
+      var rows = Array.prototype.slice.call(sec.querySelectorAll("[data-q]"));
+      var answered = rows.filter(function(el){ return String(el.value||"").trim(); });
+      if (!answered.length) return;
+      out.push(h.textContent.toUpperCase(), "");
+      answered.forEach(function(el){
+        out.push(el.getAttribute("data-q") + ":");
+        out.push(String(el.value).trim(), "");
+      });
+    });
+    if (out.length <= 2) out.push("(nothing filled in yet)");
+    return out.join(String.fromCharCode(10));
+  }
+
+  function flash(msg){
+    said.textContent = msg;
+    setTimeout(function(){ if (said.textContent === msg) said.textContent = ""; }, 6000);
+  }
+
+  var fb = document.getElementById("fallback");
+  var fbnote = document.getElementById("fbnote");
+  var out = document.getElementById("out");
+
+  function reveal(text, copied){
+    out.value = text;
+    fb.hidden = false;
+    fbnote.textContent = copied
+      ? "Copied. It is also here in case you would rather select it yourself."
+      : "Your browser would not let the page reach the clipboard. Tap inside the box, select everything, and copy it.";
+    if (!copied) { try { out.focus(); out.select(); } catch(e){} }
+  }
+
+  function selectFallback(text){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly","");
+    ta.style.position = "fixed"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch(e){ ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  document.getElementById("copy").addEventListener("click", function(){
+    var text = transcript();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        flash("Copied. Paste it into an email to tahir@topdynamos.com");
+        reveal(text, true);
+      }, function(){ reveal(text, selectFallback(text)); });
+    } else {
+      reveal(text, selectFallback(text));
+    }
   });
 
-  restore(); show(0);
+  document.getElementById("clear").addEventListener("click", function(){
+    if (!window.confirm("Clear every answer on this form? This cannot be undone.")) return;
+    fields.forEach(function(el){ el.value = ""; });
+    try { localStorage.removeItem(KEY); } catch(e){}
+    fb.hidden = true;
+    tally();
+    flash("Cleared.");
+  });
+
+  form.addEventListener("submit", function(){
+    try { localStorage.removeItem(KEY); } catch(e){}
+  });
 })();
 </script>
 </body>
